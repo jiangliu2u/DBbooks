@@ -1,3 +1,4 @@
+import re
 import scrapy
 from bs4 import BeautifulSoup
 from scrapy.http import Request
@@ -39,8 +40,13 @@ class DBbooks(scrapy.Spider):
             items['rate'] = rating_nums
             # rating_people1 = table.find('span', class_='pl').get_text().replace('\n', '')
             # rating_people = rating_people1.replace(' ', '')
-            # quote = table.find('span', class_='inq').get_text()
-            items['quote'] = 'aaa'
+            pattern = re.compile('.*?<span class="inq">(.*?)</span>.*?', re.S)
+            quote = re.findall(pattern, str(table))
+            if quote:
+                items['quote'] = quote[0]
+            else:
+                items['quote'] = '无'
+            print(items)
             yield items
 
     @staticmethod
@@ -52,7 +58,7 @@ def send_email():
     sender = '****'
     receivers = ['jiangliu2u@163.com']
     mail_user = sender
-    mail_pass = '*****'#邮箱客户端的授权码
+    mail_pass = '*****'  # 邮箱客户端的授权码
     message = MIMEMultipart()
     message['From'] = Header("江流", 'utf-8')
     message['To'] = Header("测试", 'utf-8')
