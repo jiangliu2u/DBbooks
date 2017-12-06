@@ -58,7 +58,7 @@ ROBOTSTXT_OBEY = False
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 # EXTENSIONS = {
-#    'scrapy.extensions.telnet.TelnetConsole': None,
+#     'scrapy.extensions.telnet.TelnetConsole': None,
 # }
 
 # Configure item pipelines
@@ -88,8 +88,4 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-MYSQL_HOST = '127.0.0.1'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'jiangliu'
-MYSQL_PORT = '27017'
-MYSQL_DB = 'books'
+
