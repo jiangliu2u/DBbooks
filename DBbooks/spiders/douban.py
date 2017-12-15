@@ -60,7 +60,7 @@ def send_email():
     mail_user = sender
     mail_pass = '*****'  # 邮箱客户端的授权码
     message = MIMEMultipart()
-    message['From'] = Header("江流", 'utf-8')
+    message['From'] = Header("jiangliu2u", 'utf-8')
     message['To'] = Header("测试", 'utf-8')
     subject = '豆瓣图书250'
     message['Subject'] = Header(subject, 'utf-8')
@@ -72,7 +72,7 @@ def send_email():
     try:
         smtpObj = smtplib.SMTP_SSL()
         smtpObj.set_debuglevel(1)
-        smtpObj.connect('smtp.qq.com', 465)  # 25 为 SMTP 端口号
+        smtpObj.connect('smtp.qq.com', 465)  # 465 为 SMTP 端口号,qq邮箱465端口为SSL加密端口
         smtpObj.login(mail_user, mail_pass)
         smtpObj.sendmail(sender, receivers, message.as_string())
         print("邮件发送成功")
